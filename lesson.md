@@ -35,7 +35,7 @@ If you want to see more details, run:
 SHOW ALL TABLES;
 ```
 
-To view the schema of an individual table, use the `DESCRIBE`` command.
+To view the schema of an individual table, use the `DESCRIBE` command.
 
 ```sql
 DESCRIBE address;
@@ -413,14 +413,14 @@ A common table expression (CTE) is a named subquery. It is useful when you want 
 Using the same example as above:
 
 ```sql
-WITH average_resale_value AS (
+WITH avg_resale_value_by_car_type AS (
   SELECT car_type, AVG(resale_value) AS average_resale_value
   FROM car
   GROUP BY car_type
 )
 SELECT id, resale_value, c1.car_type
 FROM car c1
-INNER JOIN average_resale_value c2 ON c1.car_type = c2.car_type
+INNER JOIN avg_resale_value_by_car_type c2 ON c1.car_type = c2.car_type
 WHERE resale_value < average_resale_value;
 ```
 
